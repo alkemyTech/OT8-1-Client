@@ -1,14 +1,19 @@
 const axios = require("axios");
 
-const baseURL = "Aca va la url base del backend";
-
-const apiService = axios.create({
-  baseURL
-});
-
-const fetchData = async (endpoint) => {
+const fetchData = async (endpoint, data, token) => {
   try {
-    const response = await apiService.get(endpoint);
+    if (!data) {
+      data = {};
+    }
+    if (token) {
+      const response = await axios.get(endpoint, data, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      return response.data;
+    }
+    const response = await axios.get(endpoint, data);
     return response.data;
   } catch (error) {
     console.error("Error al realizar la solicitud:", error);
@@ -16,9 +21,20 @@ const fetchData = async (endpoint) => {
   }
 };
 
-const postData = async (endpoint, data) => {
+const postData = async (endpoint, data, token) => {
   try {
-    const response = await apiService.post(endpoint, data);
+    if (!data) {
+      data = {};
+    }
+    if (token) {
+      const response = await axios.post(endpoint, data, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      return response.data;
+    }
+    const response = await axios.post(endpoint, data);
     return response.data;
   } catch (error) {
     console.error("Error al realizar la solicitud:", error);
