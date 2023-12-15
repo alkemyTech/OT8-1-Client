@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/login/login.html");
-});
+
 app.get("/register", (req, res) => {
   res.sendFile(__dirname + "/public/register/register.html");
 });
@@ -32,6 +32,7 @@ app.post("/loginUser", async (req, res) => {
     console.log(error);
   }
 });
+
 
 app.post("/registerUser", async (req, res) => {
   try {
