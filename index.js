@@ -35,7 +35,6 @@ app.post("/loginUser", async (req, res) => {
 app.post("/registerUser", async (req, res) => {
   try {
     const data = req.body;
-
     const url = API_URL + "/auth/register";
     const registerResponse = await postData(url, {
       firstName: data.firstName,
@@ -44,17 +43,19 @@ app.post("/registerUser", async (req, res) => {
       password: data.password
     });
     console.log(registerResponse);
-
     const loginURL = API_URL + "/auth/login";
     try {
-      const loginResponse = await postData(loginURL, {
-        email: data.email,
-        password: data.password
-      });
+      const loginResponse = await postData(
+        loginURL,
+        {
+          email: data.email,
+          password: data.password
+        },
+        null
+      );
       console.log(loginResponse);
-
-      if (loginResponse.token) {
-        const token = loginResponse.token;
+      if (loginResponse.jwt) {
+        const token = loginResponse.jwt;
         const arsURL = API_URL + "/accounts?currency=ARS";
         const usdURL = API_URL + "/accounts?currency=USD";
         try {
@@ -66,7 +67,7 @@ app.post("/registerUser", async (req, res) => {
           console.log(error);
         }
       }
-      res.json(loginResponse);
+      res.json(registerResponse);
     } catch (error) {
       console.log(error);
     }
