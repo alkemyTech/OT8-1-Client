@@ -26,7 +26,6 @@ app.post("/loginUser", async (req, res) => {
       email: data.userEmail,
       password: data.userPassword
     });
-    console.log(response);
     res.json(response);
   } catch (error) {
     console.log(error);
