@@ -120,9 +120,11 @@ footer {
   color: #999;
 }
 
+
 .color-blue {
   color: #009ee3;
 }
+
 
 .cvu {
   font-size: 16px;
@@ -132,6 +134,7 @@ footer {
   font-weight: 600;
   font-size: 18px;
 }
+
 .color-white {
   color: white;
 }
@@ -140,3 +143,11 @@ i {
   font-size: 30px;
   cursor: pointer;
 }
+
+
+
+i {
+  font-size: 20px;
+}
+
+
