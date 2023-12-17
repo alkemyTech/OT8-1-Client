@@ -26,6 +26,14 @@ app.get("/transactions", (req, res) => {
   res.sendFile(__dirname + "/public/transaction/transaction.html");
 });
 
+app.get("/paymentArs", (req, res) => {
+  res.sendFile(__dirname + "/public/payment/paymentARS.html");
+});
+
+app.get("/paymentUsd", (req, res) => {
+  res.sendFile(__dirname + "/public/payment/paymentUSD.html");
+});
+
 app.post("/loginUser", async (req, res) => {
   try {
     const data = req.body;
@@ -113,6 +121,24 @@ app.post("/userTransactions", async (req, res) => {
     console.log(response);
     res.json(response);
   } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post("/payment", async (req,res) => {
+  try{
+    const data = req.body;
+    console.log(data);
+    const url = API_URL + "/transactions/payment";
+    console.log(url);
+    const paymentResponse = await postData(url, {
+      amount: data.amount,
+      currency: data.currency,
+      description: data.description
+    },data.token);
+    console.log(paymentResponse);
+    res.json(paymentResponse);
+  }catch (error) {
     console.log(error);
   }
 });
