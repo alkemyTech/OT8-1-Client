@@ -46,3 +46,9 @@ i {
   font-size: 30px;
   cursor: pointer;
 }
+
+.btn-logout {
+  border: none;
+  color: white;
+  background-color: #00b1ea;
+}
