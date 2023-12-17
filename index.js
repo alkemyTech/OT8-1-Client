@@ -18,6 +18,14 @@ app.get("/register", (req, res) => {
   res.sendFile(__dirname + "/public/register/register.html");
 });
 
+app.get("/home", (req, res) => {
+  res.sendFile(__dirname + "/public/home/home.html");
+});
+
+app.get("/transactions", (req, res) => {
+  res.sendFile(__dirname + "/public/transaction/transaction.html");
+});
+
 app.post("/loginUser", async (req, res) => {
   try {
     const data = req.body;
