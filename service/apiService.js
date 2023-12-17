@@ -1,19 +1,16 @@
 const axios = require("axios");
 
-const fetchData = async (endpoint, data, token) => {
+const fetchData = async (endpoint, token) => {
   try {
-    if (!data) {
-      data = {};
-    }
     if (token) {
-      const response = await axios.get(endpoint, data, {
+      const response = await axios.get(endpoint, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
       });
       return response.data;
     }
-    const response = await axios.get(endpoint, data);
+    const response = await axios.get(endpoint);
     return response.data;
   } catch (error) {
     console.error("Error al realizar la solicitud:", error);
@@ -23,9 +20,6 @@ const fetchData = async (endpoint, data, token) => {
 
 const postData = async (endpoint, data, token) => {
   try {
-    if (!data) {
-      data = {};
-    }
     if (token) {
       const response = await axios.post(endpoint, data, {
         headers: {
