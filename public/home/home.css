@@ -120,9 +120,11 @@ footer {
   color: #999;
 }
 
+
 .color-blue {
   color: #009ee3;
 }
+
 
 .cvu {
   font-size: 16px;
@@ -132,6 +134,7 @@ footer {
   font-weight: 600;
   font-size: 18px;
 }
+
 .color-white {
   color: white;
 }
@@ -141,8 +144,18 @@ i {
   cursor: pointer;
 }
 
+
 .btn-logout {
   border: none;
   color: white;
   background-color: #00b1ea;
 }
+
+
+
+i {
+  font-size: 20px;
+}
+
+
+

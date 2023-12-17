@@ -1,11 +1,13 @@
 const tableBody = document.getElementById("table-body");
 const pagination = document.getElementById("pagination");
+
 const btnLogout = document.getElementById("btn-logout");
 
 btnLogout.addEventListener("click", () => {
   sessionStorage.clear();
   window.open("http://localhost:3000", "_self");
 });
+
 
 const getTransactions = async (page) => {
   tableBody.innerHTML = "";
