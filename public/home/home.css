@@ -18,6 +18,7 @@ header {
   height: 64px;
   background-color: #00b1ea;
   color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 footer {
@@ -134,8 +135,19 @@ footer {
   font-size: 18px;
 }
 
+.color-white {
+  color: white;
+}
+
+i {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
 
 i {
   font-size: 20px;
 }
+
 
