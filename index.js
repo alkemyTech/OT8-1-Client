@@ -27,6 +27,16 @@ app.get("/transactions", (req, res) => {
 });
 
 
+app.get("/paymentArs", (req, res) => {
+  res.sendFile(__dirname + "/public/payment/paymentARS.html");
+});
+
+app.get("/paymentUsd", (req, res) => {
+  res.sendFile(__dirname + "/public/payment/paymentUSD.html");
+});
+
+
+
 app.get("/loan", (req, res) => {
   res.sendFile(__dirname + "/public/simulate/loan.html");
 });
@@ -34,6 +44,7 @@ app.get("/loan", (req, res) => {
 app.get("/fixed", (req, res) => {
   res.sendFile(__dirname + "/public/simulate/fixed.html");
 });
+
 
 
 app.post("/loginUser", async (req, res) => {
@@ -126,6 +137,22 @@ app.post("/userTransactions", async (req, res) => {
     console.log(error);
   }
 });
+
+
+app.post("/payment", async (req,res) => {
+  try{
+    const data = req.body;
+    console.log(data);
+    const url = API_URL + "/transactions/payment";
+    console.log(url);
+    const paymentResponse = await postData(url, {
+      amount: data.amount,
+      currency: data.currency,
+      description: data.description
+    },data.token);
+    console.log(paymentResponse);
+    res.json(paymentResponse);
+  }catch (error) {
 
 
 app.post("/simulateLoan", async (req, res) => {
