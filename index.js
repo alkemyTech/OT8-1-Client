@@ -229,6 +229,25 @@ app.post("/getUser", async (req, res) => {
   }
 });
 
+app.post("/updateTransaction", async (req, res) => {
+  const data = req.body;
+  const transactionId = data.transactionId;
+  const updateUrl = API_URL + `transactions/${transactionId}`;
+  try {
+    const response = await patchData(
+      updateUrl,
+      {
+        description: data.description
+      },
+      token
+    );
+    console.log(response);
+    res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });

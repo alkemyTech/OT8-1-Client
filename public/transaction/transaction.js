@@ -1,6 +1,29 @@
 const tableBody = document.getElementById("table-body");
 const pagination = document.getElementById("pagination");
 const btnLogout = document.getElementById("btn-logout");
+const modal = document.getElementById("myModal");
+const modalData = document.getElementById("modal-data");
+const spanClose = document.getElementById("closeModalBtn");
+const btnUpdate = document.getElementById("btn-update-modal");
+const inputDescription = document.getElementById("inputDescription");
+
+btnUpdate.addEventListener("click", async () => {
+  const description = inputDescription.value;
+  const transactionId = sessionStorage.getItem("transaciontId");
+  if (description && transactionId) {
+    try {
+      const token = sessionStorage.getItem("token");
+      const response = await axios.post("/updateTransaction", {
+        description: description,
+        transactionId: transactionId,
+        token: token
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+});
 
 btnLogout.addEventListener("click", () => {
   sessionStorage.clear();
@@ -24,6 +47,10 @@ const getTransactions = async (page) => {
       transactions.map((transaction) => {
         const node = createNode(transaction);
         tableBody.appendChild(node);
+        node.childNodes[15].firstChild.addEventListener(
+          "click",
+          editTransaction
+        );
       });
       createPagination(response.data);
     } catch (error) {
@@ -42,8 +69,15 @@ const createNode = (transaction) => {
         <td>$${transaction.amount}</td>
         <td>${transaction.description}</td>
         <td>${getDate(transaction.transactionDate)}</td>
+        <td><button class="btn-edit" id="btn-edit">Editar</button></td>
     `;
   return node;
+};
+
+const editTransaction = (e) => {
+  const transactionId = e.target.parentNode.parentNode.childNodes[1].innerText;
+  sessionStorage.setItem("transactionId", transactionId);
+  modal.style.display = "block";
 };
 
 const createPagination = (response) => {
@@ -64,6 +98,16 @@ const getDate = (transactionDate) => {
   const y = dateComponents[0];
   const time = transactionDate.slice(11, 19);
   return d + "-" + m + "-" + y + " " + time;
+};
+
+spanClose.onclick = function () {
+  modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
 };
 
 getTransactions(1);
