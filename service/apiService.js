@@ -54,6 +54,7 @@ const patchData = async (endpoint, data, token) => {
   }
 };
 
+
 const deleteData = async (endpoint, token) => {
   try {
     if (token) {
@@ -72,4 +73,6 @@ const deleteData = async (endpoint, token) => {
   }
 };
 
+
 module.exports = { fetchData, postData, deleteData, patchData };
+

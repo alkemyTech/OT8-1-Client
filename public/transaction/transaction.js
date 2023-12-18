@@ -50,6 +50,7 @@ btnLogout.addEventListener("click", () => {
   window.open("http://localhost:3000", "_self");
 });
 
+
 const getTransactions = async (page) => {
   tableBody.innerHTML = "";
   pagination.innerHTML = "";
@@ -94,6 +95,7 @@ const createNode = (transaction) => {
   return node;
 };
 
+
 const editTransaction = (e) => {
   const transactionId = e.target.parentNode.parentNode.childNodes[1].innerText;
   sessionStorage.setItem("transactionId", transactionId);
@@ -120,6 +122,7 @@ const getDate = (transactionDate) => {
   return d + "-" + m + "-" + y + " " + time;
 };
 
+
 spanClose.onclick = function () {
   modal.style.display = "none";
   window.open("http://localhost:3000/transactions", "_self");
@@ -131,5 +134,6 @@ window.onclick = function (event) {
     window.open("http://localhost:3000/transactions", "_self");
   }
 };
+
 
 getTransactions(1);

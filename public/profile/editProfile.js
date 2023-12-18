@@ -42,6 +42,7 @@ spanClose.onclick = function () {
   inputLastName.value = null;
   modalData.innerHTML = "";
   window.open("http://localhost:3000/profile", "_self");
+
 };
 
 window.onclick = function (event) {

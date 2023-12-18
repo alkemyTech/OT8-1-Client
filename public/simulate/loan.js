@@ -44,6 +44,7 @@ spanClose.onclick = function () {
   modal.style.display = "none";
   inputAmount.value = null;
   inputMonth.value = null;
+
   modalData.innerHTML = "";
 };
 
