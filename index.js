@@ -33,7 +33,6 @@ app.get("/transactions", (req, res) => {
   res.sendFile(__dirname + "/public/transaction/transaction.html");
 });
 
-
 app.get("/depositArs", (req, res) => {
   res.sendFile(__dirname + "/public/deposit/depositARS.html");
 });
@@ -58,7 +57,6 @@ app.get("/fixed", (req, res) => {
   res.sendFile(__dirname + "/public/simulate/fixed.html");
 });
 
-
 app.get("/profile", (req, res) => {
   res.sendFile(__dirname + "/public/profile/profile.html");
 });
@@ -67,14 +65,20 @@ app.get("/editProfile", (req, res) => {
   res.sendFile(__dirname + "/public/profile/editProfile.html");
 });
 
-
-
 app.get("/accountArs", (req, res) => {
   res.sendFile(__dirname + "/public/account/accountARS.html");
 });
 
 app.get("/accountUsd", (req, res) => {
   res.sendFile(__dirname + "/public/account/accountUSD.html");
+});
+
+app.get("/sendArs", (req, res) => {
+  res.sendFile(__dirname + "/public/send/sendArs.html");
+});
+
+app.get("/sendUsd", (req, res) => {
+  res.sendFile(__dirname + "/public/send/sendUsd.html");
 });
 
 app.post("/loginUser", async (req, res) => {
@@ -168,44 +172,49 @@ app.post("/userTransactions", async (req, res) => {
   }
 });
 
-
-app.post("/deposit", async (req,res) => {
-  try{
+app.post("/deposit", async (req, res) => {
+  try {
     const data = req.body;
     console.log(data);
     const url = API_URL + "/transactions/deposit";
     console.log(url);
-    const depositResponse = await postData(url, {
-      amount: data.amount,
-      currency: data.currency,
-      description: data.description
-    },data.token);
+    const depositResponse = await postData(
+      url,
+      {
+        amount: data.amount,
+        currency: data.currency,
+        description: data.description
+      },
+      data.token
+    );
     console.log(depositResponse);
     res.json(depositResponse);
-  }catch (error) {
+  } catch (error) {
     console.log(error);
   }
 });
 
-
-app.post("/payment", async (req,res) => {
-  try{
+app.post("/payment", async (req, res) => {
+  try {
     const data = req.body;
     console.log(data);
     const url = API_URL + "/transactions/payment";
     console.log(url);
-    const paymentResponse = await postData(url, {
-      amount: data.amount,
-      currency: data.currency,
-      description: data.description
-    },data.token);
+    const paymentResponse = await postData(
+      url,
+      {
+        amount: data.amount,
+        currency: data.currency,
+        description: data.description
+      },
+      data.token
+    );
     console.log(paymentResponse);
     res.json(paymentResponse);
-  }catch (error) {
+  } catch (error) {
     console.log(error);
   }
 });
-
 
 app.post("/simulateLoan", async (req, res) => {
   const data = req.body;
@@ -325,14 +334,62 @@ app.post("/updateTransaction", async (req, res) => {
 app.post("/updateAccount", async (req, res) => {
   try {
     const data = req.body;
-    const accountId =data.accountId;
+    const accountId = data.accountId;
     console.log(accountId);
     const url = API_URL + `/accounts/${accountId}`;
-    const updateResponse = await patchData(url, {
-      newTransactionLimit: data.transactionLimit
-    },data.token);
+    const updateResponse = await patchData(
+      url,
+      {
+        newTransactionLimit: data.transactionLimit
+      },
+      data.token
+    );
     console.log(updateResponse);
     res.json(updateResponse);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post("/sendArs", async (req, res) => {
+  try {
+    const data = req.body;
+    console.log(data);
+    const url = API_URL + "/transactions/sendArs";
+    console.log(url);
+    const response = await postData(
+      url,
+      {
+        destinyAccountId: data.destinyAccountId,
+        amount: data.amount,
+        description: data.description
+      },
+      data.token
+    );
+    console.log(response);
+    res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post("/sendUsd", async (req, res) => {
+  try {
+    const data = req.body;
+    console.log(data);
+    const url = API_URL + "/transactions/sendUsd";
+    console.log(url);
+    const response = await postData(
+      url,
+      {
+        destinyAccountId: data.destinyAccountId,
+        amount: data.amount,
+        description: data.description
+      },
+      data.token
+    );
+    console.log(response);
+    res.json(response);
   } catch (error) {
     console.log(error);
   }

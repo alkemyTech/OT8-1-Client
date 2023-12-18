@@ -11,12 +11,13 @@ const btnDepositArs = document.getElementById("depositArs");
 const btnUpdateUsd = document.getElementById("updateUsd");
 const btnPaymentUsd = document.getElementById("paymentUsd");
 const btnDepositUsd = document.getElementById("depositUsd");
+const btnSendArs = document.getElementById("sendArs");
+const btnSendUsd = document.getElementById("sendUsd");
 
 btnLogout.addEventListener("click", () => {
   sessionStorage.clear();
   window.open("http://localhost:3000", "_self");
 });
-
 
 btnMas.addEventListener("click", () => {
   window.open("http://localhost:3000/transactions", "_self");
@@ -44,6 +45,14 @@ btnDepositArs.addEventListener("click", () => {
 
 btnDepositUsd.addEventListener("click", () => {
   window.open("http://localhost:3000/depositUsd", "_self");
+});
+
+btnSendArs.addEventListener("click", () => {
+  window.open("http://localhost:3000/sendArs", "_self");
+});
+
+btnSendUsd.addEventListener("click", () => {
+  window.open("http://localhost:3000/sendUsd", "_self");
 });
 
 const getAccounts = async () => {

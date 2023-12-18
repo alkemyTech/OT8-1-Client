@@ -50,7 +50,7 @@ footer {
   background-color: #009ee3;
   cursor: pointer;
   transition: opacity 0.15s;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .btn-register:hover {
