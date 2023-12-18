@@ -36,4 +36,22 @@ const postData = async (endpoint, data, token) => {
   }
 };
 
-module.exports = { fetchData, postData };
+const deleteData = async (endpoint, token) => {
+  try {
+    if (token) {
+      const response = await axios.delete(endpoint, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      return response.data;
+    }
+    const response = await axios.delete(endpoint);
+    return response.data;
+  } catch (error) {
+    console.error("Error al realizar la solicitud:", error);
+    throw error;
+  }
+};
+
+module.exports = { fetchData, postData, deleteData };

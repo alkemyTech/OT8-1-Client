@@ -42,12 +42,16 @@ btnSimulate.addEventListener("click", async (e) => {
 
 spanClose.onclick = function () {
   modal.style.display = "none";
+  inputAmount.value = null;
+  inputMonth.value = null;
   modalData.innerHTML = "";
 };
 
 window.onclick = function (event) {
   if (event.target === modal) {
-    modal.style.display = "";
+    modal.style.display = "none";
+    inputAmount.value = null;
+    inputMonth.value = null;
     modalData.innerHTML = "";
   }
 };
