@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
 const axios = require("axios");
-const { fetchData, postData, patchData } = require("./service/apiService");
+const { fetchData, postData, deleteData, patchData } = require("./service/apiService");
+const { get } = require("http");
 
 const app = express();
 const port = 3000;
@@ -26,7 +27,6 @@ app.get("/transactions", (req, res) => {
   res.sendFile(__dirname + "/public/transaction/transaction.html");
 });
 
-
 app.get("/depositArs", (req, res) => {
   res.sendFile(__dirname + "/public/deposit/depositARS.html");
 });
@@ -35,8 +35,6 @@ app.get("/depositUsd", (req, res) => {
   res.sendFile(__dirname + "/public/deposit/depositUSD.html");
 });
 
-
-
 app.get("/paymentArs", (req, res) => {
   res.sendFile(__dirname + "/public/payment/paymentARS.html");
 });
@@ -44,7 +42,6 @@ app.get("/paymentArs", (req, res) => {
 app.get("/paymentUsd", (req, res) => {
   res.sendFile(__dirname + "/public/payment/paymentUSD.html");
 });
-
 
 
 app.get("/loan", (req, res) => {
@@ -56,6 +53,14 @@ app.get("/fixed", (req, res) => {
 });
 
 
+app.get("/profile", (req, res) => {
+  res.sendFile(__dirname + "/public/profile/profile.html");
+});
+
+app.get("/editProfile", (req, res) => {
+  res.sendFile(__dirname + "/public/profile/editProfile.html");
+});
+
 
 app.get("/accountArs", (req, res) => {
   res.sendFile(__dirname + "/public/account/accountARS.html");
@@ -64,7 +69,6 @@ app.get("/accountArs", (req, res) => {
 app.get("/accountUsd", (req, res) => {
   res.sendFile(__dirname + "/public/account/accountUSD.html");
 });
-
 
 app.post("/loginUser", async (req, res) => {
   try {
@@ -157,7 +161,6 @@ app.post("/userTransactions", async (req, res) => {
   }
 });
 
-
 app.post("/deposit", async (req,res) => {
   try{
     const data = req.body;
@@ -240,6 +243,51 @@ app.post("/simulateFixed", async (req, res) => {
     console.log(error);
   }
 });
+
+app.post("/editUser", async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const token = data.token;
+  const simulateURL = API_URL + `/users/${data.userId}`;
+  try {
+    const response = await patchData(
+      simulateURL,
+      {
+        firstName: data.firstName,
+        lastName: data.lastName
+      },
+      token
+    );
+    console.log(response);
+    res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post("/deleteUser", async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const token = data.token;
+  const deleteURL = API_URL + `/users/${data.userId}`;
+  try {
+    const response = await deleteData(deleteURL, token);
+    console.log(response);
+    res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post("/getUser", async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const token = data.token;
+  const getUrl = API_URL + `/users/${data.userId}`;
+  try {
+    const response = await fetchData(getUrl, token);
+    console.log(response);
+    res.json(response);
 
 app.post("/updateAccount", async (req, res) => {
   try {

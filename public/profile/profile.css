@@ -8,14 +8,12 @@ body {
 }
 body {
   background-color: #ededed;
-
   display: flex;
   flex-direction: column;
 }
 
 main {
   flex: 1;
-
 }
 
 header {
@@ -32,35 +30,6 @@ footer {
   width: 100%;
 }
 
-.simulate-container {
-  padding-top: 60px;
-}
-
-.btn-simulate {
-  height: 48px;
-  padding: 0px 24px;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  background-color: #009ee3;
-  cursor: pointer;
-  transition: opacity 0.15s;
-  font-weight: 500;
-}
-
-.btn-simulate:hover {
-  opacity: 0.9;
-}
-
-.form-container {
-  padding: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  background-color: white;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-
-
 .color-blue {
   color: #009ee3;
 }
@@ -70,14 +39,86 @@ footer {
 }
 
 i {
+  padding-left: auto;
+  padding-right: 15px;
   font-size: 30px;
   cursor: pointer;
+}
+
+.icon {
+  font-size: 40px;
 }
 
 .btn-logout {
   border: none;
   color: white;
   background-color: #00b1ea;
+}
+
+.main-container {
+  margin-top: 25px;
+}
+
+.profile-container {
+  padding: 16px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.edit-container {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.close-container {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.user {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.link {
+  padding: 0;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.btnlink {
+  padding: 0;
+  border: none;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 18px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.btnClose {
+  margin: auto;
+  margin-top: 16px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: #009ee3;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-weight: 500;
+}
+
+.btnClose {
+  opacity: 0.9;
 }
 
 .myModal {
@@ -100,10 +141,6 @@ i {
   width: 50%;
 }
 
-.modal-content h4 {
-  border-bottom: 1px solid lightgray;
-}
-
 .close {
   color: #aaa;
   margin-left: auto;
@@ -117,4 +154,8 @@ i {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.color-99 {
+  color: #999;
 }

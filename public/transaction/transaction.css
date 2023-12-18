@@ -8,6 +8,14 @@ body {
 }
 body {
   background-color: #ededed;
+
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+
 }
 
 header {
@@ -21,16 +29,16 @@ footer {
   height: 71px;
   background-color: #f5f5f5;
   color: rgba(0, 0, 0, 0.55);
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
+
+
+
 
 
 table {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-
 
 td {
   color: #333 !important;
@@ -39,7 +47,6 @@ td {
 .color-blue {
   color: #009ee3 !important;
 }
-
 
 .color-white {
   color: white;

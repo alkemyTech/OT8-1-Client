@@ -1,6 +1,5 @@
 const tableBody = document.getElementById("table-body");
 const pagination = document.getElementById("pagination");
-
 const btnLogout = document.getElementById("btn-logout");
 
 btnLogout.addEventListener("click", () => {

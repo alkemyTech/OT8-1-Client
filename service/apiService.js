@@ -36,17 +36,19 @@ const postData = async (endpoint, data, token) => {
   }
 };
 
-const patchData = async (endpoint, data, token) => {
+
+const deleteData = async (endpoint, token) => {
   try {
     if (token) {
-      const response = await axios.patch(endpoint, data, {
+      const response = await axios.delete(endpoint, {
+
         headers: {
           "Authorization": `Bearer ${token}`
         }
       });
       return response.data;
     }
-    const response = await axios.patch(endpoint, data);
+    const response = await axios.delete(endpoint);
     return response.data;
   } catch (error) {
     console.error("Error al realizar la solicitud:", error);
@@ -54,4 +56,6 @@ const patchData = async (endpoint, data, token) => {
   }
 };
 
-module.exports = { fetchData, postData, patchData };
+
+module.exports = { fetchData, postData, deleteData, patchData };
+

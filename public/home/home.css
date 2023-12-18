@@ -8,6 +8,12 @@ body {
 }
 body {
   background-color: #ededed;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 button {
@@ -32,6 +38,7 @@ footer {
 
 .info-container {
   margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 .actividad-container {
@@ -119,13 +126,9 @@ footer {
 .color-99 {
   color: #999;
 }
-
-
 .color-blue {
   color: #009ee3;
 }
-
-
 .cvu {
   font-size: 16px;
 }
@@ -156,6 +159,8 @@ i {
   background-color: white;
   border-radius: 6px;
   font-weight: 500;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
 }
 
 .simulate-container a {
@@ -163,8 +168,7 @@ i {
   color: rgba(0, 0, 0, 0.9);
 }
 
-
-
 i {
   font-size: 20px;
 }
+
