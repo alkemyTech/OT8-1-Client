@@ -1,7 +1,5 @@
 const inputFirstName = document.getElementById("InputFirstName");
 const inputLastName = document.getElementById("InputLastName");
-const inputFirstName = document.getElementById("InputFirstName");
-const inputLastName = document.getElementById("InputLastName");
 const inputEmail = document.getElementById("InputEmail");
 const inputPassword = document.getElementById("InputPassword");
 const btnRegister = document.getElementById("btnRegister");
