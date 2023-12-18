@@ -4,6 +4,7 @@ const btnSubmit = document.getElementById("btnSubmit");
 var modal = document.getElementById('modalInfo');
 var btnClose = document.getElementById('closeModal');
 var modalContent = document.getElementById('modalContent');
+const btnLogout = document.getElementById("btn-logout");
 
 btnSubmit.addEventListener("click", async (e) => {
   
@@ -32,7 +33,7 @@ btnSubmit.addEventListener("click", async (e) => {
         <p class="info">Fecha: ${getDate(response.data.creationDate)}</p><br>
         <p class="info">Descripción: ${response.data.description}</p>
         <div class="container-button">
-          <button type="submit" class="btn-register return" id="return">
+          <button type="submit" class="btn-register return" id="return" onclick="home()">
             Volver
           </button>
         </div>`;
@@ -64,3 +65,12 @@ const getDate = (transactionDate) => {
   const time = transactionDate.slice(11, 19);
   return d + "-" + m + "-" + y + " " + time;
 };
+
+const home = () => {
+  window.open("http://localhost:3000/home", "_self");
+}
+
+btnLogout.addEventListener("click", () => {
+  sessionStorage.clear();
+  window.open("http://localhost:3000", "_self");
+});

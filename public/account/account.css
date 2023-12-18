@@ -98,3 +98,13 @@ header {
   .border-bottom{
     border-bottom: 1px solid lightgray;
   }
+
+  .btn-logout {
+    border: none;
+    color: white;
+    background-color: #00b1ea;
+  }
+
+  .color-white {
+    color: white;
+  }
