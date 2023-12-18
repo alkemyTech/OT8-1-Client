@@ -27,6 +27,16 @@ app.get("/transactions", (req, res) => {
 });
 
 
+app.get("/depositArs", (req, res) => {
+  res.sendFile(__dirname + "/public/deposit/depositARS.html");
+});
+
+app.get("/depositUsd", (req, res) => {
+  res.sendFile(__dirname + "/public/deposit/depositUSD.html");
+});
+
+
+
 app.get("/paymentArs", (req, res) => {
   res.sendFile(__dirname + "/public/payment/paymentARS.html");
 });
@@ -44,6 +54,7 @@ app.get("/loan", (req, res) => {
 app.get("/fixed", (req, res) => {
   res.sendFile(__dirname + "/public/simulate/fixed.html");
 });
+
 
 
 
@@ -139,6 +150,15 @@ app.post("/userTransactions", async (req, res) => {
 });
 
 
+app.post("/deposit", async (req,res) => {
+  try{
+    const data = req.body;
+    console.log(data);
+    const url = API_URL + "/transactions/deposit";
+    console.log(url);
+    const depositResponse = await postData(url, {
+
+
 app.post("/payment", async (req,res) => {
   try{
     const data = req.body;
@@ -150,6 +170,9 @@ app.post("/payment", async (req,res) => {
       currency: data.currency,
       description: data.description
     },data.token);
+    console.log(depositResponse);
+    res.json(depositResponse);
+  }catch (error) {
     console.log(paymentResponse);
     res.json(paymentResponse);
   }catch (error) {
