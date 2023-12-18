@@ -1,6 +1,6 @@
 const inputFirstName = document.getElementById("InputFirstName");
 const inputLastName = document.getElementById("InputLastName");
-const btnEdit = document.getElementById("btnRegister");
+const btnEdit = document.getElementById("btnEdit");
 const modal = document.getElementById("myModal");
 const modalData = document.getElementById("modal-data");
 const spanClose = document.getElementById("closeModalBtn");
@@ -25,7 +25,7 @@ btnEdit.addEventListener("click", async (e) => {
         node.className = "container";
         node.innerHTML = `
             <h4>Editaste tu Cuenta</h4>
-            <p class="mt-3">Nombre: AR$${response.data.firstName}</p>
+            <p class="mt-3">Nombre: ${response.data.firstName}</p>
             <p>Apellido: ${response.data.lastName}</p>
         `;
         modalData.appendChild(node);
@@ -41,6 +41,7 @@ spanClose.onclick = function () {
   inputFirstName.value = null;
   inputLastName.value = null;
   modalData.innerHTML = "";
+  window.open("http://localhost:3000/profile", "_self");
 };
 
 window.onclick = function (event) {
@@ -49,5 +50,6 @@ window.onclick = function (event) {
     inputFirstName.value = null;
     inputLastName.value = null;
     modalData.innerHTML = "";
+    window.open("http://localhost:3000/profile", "_self");
   }
 };

@@ -1,7 +1,12 @@
 const express = require("express");
 const path = require("path");
 const axios = require("axios");
-const { fetchData, postData, deleteData } = require("./service/apiService");
+const {
+  fetchData,
+  postData,
+  deleteData,
+  patchData
+} = require("./service/apiService");
 const { get } = require("http");
 
 const app = express();
@@ -232,7 +237,8 @@ app.post("/getUser", async (req, res) => {
 app.post("/updateTransaction", async (req, res) => {
   const data = req.body;
   const transactionId = data.transactionId;
-  const updateUrl = API_URL + `transactions/${transactionId}`;
+  const token = data.token;
+  const updateUrl = API_URL + `/transactions/${transactionId}`;
   try {
     const response = await patchData(
       updateUrl,

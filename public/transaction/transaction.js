@@ -7,9 +7,18 @@ const spanClose = document.getElementById("closeModalBtn");
 const btnUpdate = document.getElementById("btn-update-modal");
 const inputDescription = document.getElementById("inputDescription");
 
+inputDescription.addEventListener("change", () => {
+  const updatedEl = document.getElementById("updated");
+  if (updatedEl) {
+    updatedEl.parentNode.removeChild(updatedEl);
+  }
+});
+
 btnUpdate.addEventListener("click", async () => {
+  console.log("clic");
   const description = inputDescription.value;
-  const transactionId = sessionStorage.getItem("transaciontId");
+  const transactionId = sessionStorage.getItem("transactionId");
+  console.log(description, transactionId);
   if (description && transactionId) {
     try {
       const token = sessionStorage.getItem("token");
@@ -19,6 +28,17 @@ btnUpdate.addEventListener("click", async () => {
         token: token
       });
       console.log(response);
+      if (response.data.description) {
+        const updatedEl = document.getElementById("updated");
+        if (updatedEl) {
+          updatedEl.parentNode.removeChild(updatedEl);
+        }
+        const node = document.createElement("span");
+        node.className = "updated";
+        node.id = "updated";
+        node.innerText = "Actualizado";
+        modalData.appendChild(node);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -102,11 +122,13 @@ const getDate = (transactionDate) => {
 
 spanClose.onclick = function () {
   modal.style.display = "none";
+  window.open("http://localhost:3000/transactions", "_self");
 };
 
 window.onclick = function (event) {
   if (event.target === modal) {
     modal.style.display = "none";
+    window.open("http://localhost:3000/transactions", "_self");
   }
 };
 

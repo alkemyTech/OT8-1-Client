@@ -102,11 +102,15 @@ i {
   cursor: pointer;
 }
 
-.btn-edit-modal {
+.btn-update-modal {
   margin-top: 10px;
   padding: 4px 8px;
   background-color: #009ee3;
   color: white;
   border: none;
   border-radius: 4px;
+}
+
+.updated {
+  color: #1bc568;
 }
