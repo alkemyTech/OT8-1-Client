@@ -26,9 +26,11 @@ footer {
   width: 100%;
 }
 
+
 table {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
 
 td {
   color: #333 !important;
@@ -37,6 +39,7 @@ td {
 .color-blue {
   color: #009ee3 !important;
 }
+
 
 .color-white {
   color: white;

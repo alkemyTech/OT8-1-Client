@@ -26,6 +26,7 @@ app.get("/transactions", (req, res) => {
   res.sendFile(__dirname + "/public/transaction/transaction.html");
 });
 
+
 app.get("/loan", (req, res) => {
   res.sendFile(__dirname + "/public/simulate/loan.html");
 });
@@ -33,6 +34,7 @@ app.get("/loan", (req, res) => {
 app.get("/fixed", (req, res) => {
   res.sendFile(__dirname + "/public/simulate/fixed.html");
 });
+
 
 app.post("/loginUser", async (req, res) => {
   try {
@@ -125,6 +127,7 @@ app.post("/userTransactions", async (req, res) => {
   }
 });
 
+
 app.post("/simulateLoan", async (req, res) => {
   const data = req.body;
   console.log(data);
@@ -170,6 +173,7 @@ app.post("/simulateFixed", async (req, res) => {
     console.log(error);
   }
 });
+
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
