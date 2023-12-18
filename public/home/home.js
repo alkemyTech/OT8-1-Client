@@ -5,6 +5,14 @@ const accountUsdBalance = document.getElementById("accountUsd-Balance");
 const transactionList = document.getElementById("transaction-list");
 const btnMas = document.getElementById("btn-mas");
 
+const btnLogout = document.getElementById("btn-logout");
+
+btnLogout.addEventListener("click", () => {
+  sessionStorage.clear();
+  window.open("http://localhost:3000", "_self");
+});
+
+
 btnMas.addEventListener("click", () => {
   window.open("http://localhost:3000/transactions", "_self");
 });

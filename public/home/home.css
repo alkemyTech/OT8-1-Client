@@ -145,9 +145,17 @@ i {
 }
 
 
+.btn-logout {
+  border: none;
+  color: white;
+  background-color: #00b1ea;
+}
+
+
 
 i {
   font-size: 20px;
 }
+
 
 
