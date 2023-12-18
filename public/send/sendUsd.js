@@ -5,6 +5,12 @@ const btnSend = document.getElementById("btnSend");
 const modal = document.getElementById("myModal");
 const modalData = document.getElementById("modal-data");
 const spanClose = document.getElementById("closeModalBtn");
+const btnLogout = document.getElementById("btn-logout");
+
+btnLogout.addEventListener("click", () => {
+  sessionStorage.clear();
+  window.open("http://localhost:3000", "_self");
+});
 
 btnSend.addEventListener("click", async (e) => {
   e.preventDefault();
