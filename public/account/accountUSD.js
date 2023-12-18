@@ -7,6 +7,7 @@ const accountUsdCVU = document.getElementById("accountUsd-CVU");
 const accountUsdBalance = document.getElementById("accountUsd-Balance");
 const accountUsdLimit = document.getElementById("accountUsd-Limit");
 const accountUsdDate = document.getElementById("accountUsd-Date");
+const btnLogout = document.getElementById("btn-logout");
 
 btnSubmit.addEventListener("click", async (e) => {
   
@@ -92,5 +93,10 @@ btnSubmit.addEventListener("click", async (e) => {
   const home = () => {
     window.open("http://localhost:3000/home", "_self");
   }
+
+  btnLogout.addEventListener("click", () => {
+    sessionStorage.clear();
+    window.open("http://localhost:3000", "_self");
+  });
 
   getAccounts();

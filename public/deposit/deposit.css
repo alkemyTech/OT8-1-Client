@@ -90,3 +90,13 @@ header {
   .color-success{
     color:rgb(37, 157, 85);
   }
+
+  .btn-logout {
+    border: none;
+    color: white;
+    background-color: #00b1ea;
+  }
+
+  .color-white {
+    color: white;
+  }

@@ -317,6 +317,10 @@ app.post("/updateTransaction", async (req, res) => {
     );
     console.log(response);
     res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 app.post("/updateAccount", async (req, res) => {
   try {

@@ -5,6 +5,12 @@ const accountUsdBalance = document.getElementById("accountUsd-Balance");
 const transactionList = document.getElementById("transaction-list");
 const btnMas = document.getElementById("btn-mas");
 const btnLogout = document.getElementById("btn-logout");
+const btnUpdateArs = document.getElementById("updateArs");
+const btnPaymentArs = document.getElementById("paymentArs");
+const btnDepositArs = document.getElementById("depositArs");
+const btnUpdateUsd = document.getElementById("updateUsd");
+const btnPaymentUsd = document.getElementById("paymentUsd");
+const btnDepositUsd = document.getElementById("depositUsd");
 
 btnLogout.addEventListener("click", () => {
   sessionStorage.clear();
@@ -14,6 +20,30 @@ btnLogout.addEventListener("click", () => {
 
 btnMas.addEventListener("click", () => {
   window.open("http://localhost:3000/transactions", "_self");
+});
+
+btnUpdateArs.addEventListener("click", () => {
+  window.open("http://localhost:3000/accountArs", "_self");
+});
+
+btnUpdateUsd.addEventListener("click", () => {
+  window.open("http://localhost:3000/accountUsd", "_self");
+});
+
+btnPaymentArs.addEventListener("click", () => {
+  window.open("http://localhost:3000/paymentArs", "_self");
+});
+
+btnPaymentUsd.addEventListener("click", () => {
+  window.open("http://localhost:3000/paymentUsd", "_self");
+});
+
+btnDepositArs.addEventListener("click", () => {
+  window.open("http://localhost:3000/depositArs", "_self");
+});
+
+btnDepositUsd.addEventListener("click", () => {
+  window.open("http://localhost:3000/depositUsd", "_self");
 });
 
 const getAccounts = async () => {

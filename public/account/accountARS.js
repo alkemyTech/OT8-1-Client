@@ -7,6 +7,7 @@ const accountArsCVU = document.getElementById("accountArs-CVU");
 const accountArsBalance = document.getElementById("accountArs-Balance");
 const accountArsLimit = document.getElementById("accountArs-Limit");
 const accountArsDate = document.getElementById("accountArs-Date");
+const btnLogout = document.getElementById("btn-logout");
 
 btnSubmit.addEventListener("click", async (e) => {
   
@@ -92,5 +93,10 @@ btnSubmit.addEventListener("click", async (e) => {
   const home = () => {
     window.open("http://localhost:3000/home", "_self");
   }
+
+  btnLogout.addEventListener("click", () => {
+    sessionStorage.clear();
+    window.open("http://localhost:3000", "_self");
+  });
 
   getAccounts();
