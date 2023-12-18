@@ -11,6 +11,7 @@ btnLogout.addEventListener("click", () => {
   window.open("http://localhost:3000", "_self");
 });
 
+
 btnMas.addEventListener("click", () => {
   window.open("http://localhost:3000/transactions", "_self");
 });

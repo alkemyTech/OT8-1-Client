@@ -7,6 +7,7 @@ btnLogout.addEventListener("click", () => {
   window.open("http://localhost:3000", "_self");
 });
 
+
 const getTransactions = async (page) => {
   tableBody.innerHTML = "";
   pagination.innerHTML = "";

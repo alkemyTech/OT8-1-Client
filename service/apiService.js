@@ -36,10 +36,12 @@ const postData = async (endpoint, data, token) => {
   }
 };
 
+
 const deleteData = async (endpoint, token) => {
   try {
     if (token) {
       const response = await axios.delete(endpoint, {
+
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -54,4 +56,6 @@ const deleteData = async (endpoint, token) => {
   }
 };
 
-module.exports = { fetchData, postData, deleteData };
+
+module.exports = { fetchData, postData, deleteData, patchData };
+

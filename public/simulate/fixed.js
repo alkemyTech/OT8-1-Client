@@ -43,14 +43,17 @@ spanClose.onclick = function () {
   modal.style.display = "none";
   inputAmount.value = null;
   inputDay.value = null;
+
   modalData.innerHTML = "";
 };
 
 window.onclick = function (event) {
   if (event.target === modal) {
+
     inputAmount.value = null;
     inputDay.value = null;
     modal.style.display = "none";
+
     modalData.innerHTML = "";
   }
 };
