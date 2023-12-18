@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const axios = require("axios");
-const { fetchData, postData } = require("./service/apiService");
+const { fetchData, postData, patchData } = require("./service/apiService");
 
 const app = express();
 const port = 3000;
@@ -56,6 +56,14 @@ app.get("/fixed", (req, res) => {
 });
 
 
+
+app.get("/accountArs", (req, res) => {
+  res.sendFile(__dirname + "/public/account/accountARS.html");
+});
+
+app.get("/accountUsd", (req, res) => {
+  res.sendFile(__dirname + "/public/account/accountUSD.html");
+});
 
 
 app.post("/loginUser", async (req, res) => {
@@ -157,6 +165,16 @@ app.post("/deposit", async (req,res) => {
     const url = API_URL + "/transactions/deposit";
     console.log(url);
     const depositResponse = await postData(url, {
+      amount: data.amount,
+      currency: data.currency,
+      description: data.description
+    },data.token);
+    console.log(depositResponse);
+    res.json(depositResponse);
+  }catch (error) {
+    console.log(error);
+  }
+});
 
 
 app.post("/payment", async (req,res) => {
@@ -170,13 +188,12 @@ app.post("/payment", async (req,res) => {
       currency: data.currency,
       description: data.description
     },data.token);
-    console.log(depositResponse);
-    res.json(depositResponse);
-  }catch (error) {
     console.log(paymentResponse);
     res.json(paymentResponse);
   }catch (error) {
-
+    console.log(error);
+  }
+});
 
 app.post("/simulateLoan", async (req, res) => {
   const data = req.body;
@@ -224,6 +241,21 @@ app.post("/simulateFixed", async (req, res) => {
   }
 });
 
+app.post("/updateAccount", async (req, res) => {
+  try {
+    const data = req.body;
+    const accountId =data.accountId;
+    console.log(accountId);
+    const url = API_URL + `/accounts/${accountId}`;
+    const updateResponse = await patchData(url, {
+      newTransactionLimit: data.transactionLimit
+    },data.token);
+    console.log(updateResponse);
+    res.json(updateResponse);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
