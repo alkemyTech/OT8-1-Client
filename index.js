@@ -1,7 +1,13 @@
 const express = require("express");
 const path = require("path");
 const axios = require("axios");
-const { fetchData, postData, deleteData, patchData } = require("./service/apiService");
+const {
+  fetchData,
+  postData,
+  deleteData,
+  patchData
+} = require("./service/apiService");
+
 const { get } = require("http");
 
 const app = express();
@@ -27,6 +33,7 @@ app.get("/transactions", (req, res) => {
   res.sendFile(__dirname + "/public/transaction/transaction.html");
 });
 
+
 app.get("/depositArs", (req, res) => {
   res.sendFile(__dirname + "/public/deposit/depositARS.html");
 });
@@ -42,7 +49,6 @@ app.get("/paymentArs", (req, res) => {
 app.get("/paymentUsd", (req, res) => {
   res.sendFile(__dirname + "/public/payment/paymentUSD.html");
 });
-
 
 app.get("/loan", (req, res) => {
   res.sendFile(__dirname + "/public/simulate/loan.html");
@@ -60,6 +66,7 @@ app.get("/profile", (req, res) => {
 app.get("/editProfile", (req, res) => {
   res.sendFile(__dirname + "/public/profile/editProfile.html");
 });
+
 
 
 app.get("/accountArs", (req, res) => {
@@ -161,6 +168,7 @@ app.post("/userTransactions", async (req, res) => {
   }
 });
 
+
 app.post("/deposit", async (req,res) => {
   try{
     const data = req.body;
@@ -197,6 +205,7 @@ app.post("/payment", async (req,res) => {
     console.log(error);
   }
 });
+
 
 app.post("/simulateLoan", async (req, res) => {
   const data = req.body;
@@ -286,6 +295,26 @@ app.post("/getUser", async (req, res) => {
   const getUrl = API_URL + `/users/${data.userId}`;
   try {
     const response = await fetchData(getUrl, token);
+    console.log(response);
+    res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post("/updateTransaction", async (req, res) => {
+  const data = req.body;
+  const transactionId = data.transactionId;
+  const token = data.token;
+  const updateUrl = API_URL + `/transactions/${transactionId}`;
+  try {
+    const response = await patchData(
+      updateUrl,
+      {
+        description: data.description
+      },
+      token
+    );
     console.log(response);
     res.json(response);
 
