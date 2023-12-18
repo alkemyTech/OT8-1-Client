@@ -4,7 +4,6 @@ const accountUsdCVU = document.getElementById("accountUsd-CVU");
 const accountUsdBalance = document.getElementById("accountUsd-Balance");
 const transactionList = document.getElementById("transaction-list");
 const btnMas = document.getElementById("btn-mas");
-
 const btnLogout = document.getElementById("btn-logout");
 
 btnLogout.addEventListener("click", () => {

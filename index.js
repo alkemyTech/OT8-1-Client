@@ -26,6 +26,16 @@ app.get("/transactions", (req, res) => {
   res.sendFile(__dirname + "/public/transaction/transaction.html");
 });
 
+
+app.get("/loan", (req, res) => {
+  res.sendFile(__dirname + "/public/simulate/loan.html");
+});
+
+app.get("/fixed", (req, res) => {
+  res.sendFile(__dirname + "/public/simulate/fixed.html");
+});
+
+
 app.post("/loginUser", async (req, res) => {
   try {
     const data = req.body;
@@ -116,6 +126,54 @@ app.post("/userTransactions", async (req, res) => {
     console.log(error);
   }
 });
+
+
+app.post("/simulateLoan", async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const amount = data.amount;
+  const month = data.month;
+  const token = data.token;
+  const simulateURL = API_URL + "/loan/simulate";
+  try {
+    const response = await postData(
+      simulateURL,
+      {
+        amount: amount,
+        months: month
+      },
+      token
+    );
+    console.log(response);
+    res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post("/simulateFixed", async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const amount = data.amount;
+  const days = data.days;
+  const token = data.token;
+  const simulateURL = API_URL + "/fixedTerm/simulate";
+  try {
+    const response = await postData(
+      simulateURL,
+      {
+        amount: amount,
+        days: days
+      },
+      token
+    );
+    console.log(response);
+    res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
