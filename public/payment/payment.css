@@ -1,7 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+html,
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  color: rgba(0, 0, 0, 0.9);
+}
+body {
+  background-color: #ededed;
+  display: flex;
+  flex-direction: column;
+}
+
 header {
   height: 64px;
   background-color: #00b1ea;
   color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 footer {
@@ -34,9 +49,11 @@ footer {
 }
 
 .form-container {
+  background-color: white;
   padding: 16px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .modal {
@@ -48,7 +65,7 @@ footer {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal-content {
@@ -75,20 +92,20 @@ footer {
   cursor: pointer;
 }
 
-.info{
+.info {
   margin: 0;
 }
-.modal-title{
+.modal-title {
   border-bottom: 1px solid lightgray;
 }
 
-.container-button{
+.container-button {
   margin-top: 8px;
   text-align: end;
 }
 
-.color-success{
-  color:rgb(37, 157, 85);
+.color-success {
+  color: rgb(37, 157, 85);
 }
 
 .btn-logout {
@@ -99,4 +116,13 @@ footer {
 
 .color-white {
   color: white;
+}
+
+.color-blue {
+  color: #009ee3;
+}
+
+i {
+  font-size: 30px;
+  cursor: pointer;
 }

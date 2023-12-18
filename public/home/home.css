@@ -147,30 +147,20 @@ i {
   cursor: pointer;
 }
 
-
 .btn-logout {
   border: none;
   color: white;
   background-color: #00b1ea;
 }
 
-
 .simulate-container {
   background-color: white;
   border-radius: 6px;
   font-weight: 500;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
 }
 
 .simulate-container a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.9);
 }
-
-
-i {
-  font-size: 20px;
-}
-
-
